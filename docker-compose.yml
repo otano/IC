@@ -16,7 +16,7 @@ services:
       - mariadb_data:/var/lib/mysql
     ports:
       # Port MariaDB mappé sur l'hôte (optionnel, utile pour accéder directement)
-      - "3306:3306"
+      - "3307:3306"
     restart: always
 
   # --- Service Jenkins (Intégration Continue) ---
@@ -36,7 +36,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       # Port web de Jenkins
-      - "8080:8080"
+      - "8082:8080"
       # Port JNLP pour les agents Jenkins
       - "50000:50000"
     restart: always
