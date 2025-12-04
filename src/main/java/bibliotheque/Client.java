@@ -51,7 +51,8 @@ public class Client {
 
     public void deleteFromBDD(String nom, String prenom) 
     {
-        String sql = "DELETE FROM clients WHERE nom = ? AND prenom = ?";
+        // CORRECTION DE LA CASSE DE LA TABLE : 'clients' devient 'Clients'
+        String sql = "DELETE FROM Clients WHERE nom = ? AND prenom = ?"; 
         try (PreparedStatement stmt = this.conn.prepareStatement(sql)) {
 
             stmt.setString(1, nom);

@@ -1,16 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: ClientTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.077 s <<< FAILURE! -- in ClientTest
-ClientTest.testDeleteClient -- Time elapsed: 0.044 s <<< FAILURE!
-org.opentest4j.AssertionFailedError: Le client devrait avoir été supprimé ! ==> expected: <null> but was: <1000>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-	at org.junit.jupiter.api.AssertNull.failNotNull(AssertNull.java:50)
-	at org.junit.jupiter.api.AssertNull.assertNull(AssertNull.java:35)
-	at org.junit.jupiter.api.Assertions.assertNull(Assertions.java:283)
-	at ClientTest.testDeleteClient(ClientTest.java:40)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in ClientTest

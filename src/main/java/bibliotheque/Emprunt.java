@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
 
+
 public class Emprunt {
     // Classe pour interagir avec la table Emprunts
 
@@ -68,7 +69,8 @@ public class Emprunt {
     }
 
     public void deleteByLivre(Integer idLivre) throws SQLException {
-        String sql = "DELETE FROM emprunts WHERE id_livre = ?";
+        // CORRECTION DE LA CASSE DE LA TABLE : 'emprunts' devient 'Emprunts'
+        String sql = "DELETE FROM Emprunts WHERE id_livre = ?";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, idLivre);
             ps.executeUpdate();

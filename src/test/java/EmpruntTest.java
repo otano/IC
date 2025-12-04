@@ -16,7 +16,8 @@ public class EmpruntTest {
     
     private static int TEST_CLIENT_ID = 999;
     private static int TEST_LIVRE_ID = 888;
-    private static String LIVRE_ISBN = "978-TEST-EMPRUNT";
+    // On garde la variable LIVRE_ISBN mais on l'utilise pour la colonne 'auteur'
+    private static String LIVRE_ISBN = "978-TEST-EMPRUNT"; 
     
     // initialisation de la Connexion et des Données de Base ---
 
@@ -95,12 +96,16 @@ public class EmpruntTest {
     
     // Insère les données nécessaires avant le début des tests
     private static void insertTestData(Connection conn) throws SQLException {
+        // CORRECTION MAJEURE: Remplacement de 'isbn' par 'auteur' pour correspondre au schéma BDD
         try (PreparedStatement psClient = conn.prepareStatement("INSERT INTO Clients(id_client, nom, prenom) VALUES (?, 'TestEmprunt', 'Client')");
-             PreparedStatement psLivre = conn.prepareStatement("INSERT INTO Livres(id_livre, titre, isbn, disponible) VALUES (?, 'TitreTest', ?, TRUE)")) {
+             PreparedStatement psLivre = conn.prepareStatement("INSERT INTO Livres(id_livre, titre, auteur, disponible) VALUES (?, 'TitreTest', ?, TRUE)")) {
             
             psClient.setInt(1, TEST_CLIENT_ID); psClient.executeUpdate();
+            
             psLivre.setInt(1, TEST_LIVRE_ID); 
-            psLivre.setString(1, LIVRE_ISBN); 
+            // CORRECTION: psLivre.setString(1, ...) a été changé en psLivre.setString(2, ...)
+            psLivre.setString(2, LIVRE_ISBN); // Définit le 2ème '?' (auteur) avec la valeur d'ISBN pour les besoins du test
+            
             psLivre.executeUpdate();
         }
     }
