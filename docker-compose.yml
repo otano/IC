@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # --- Service Base de Données (MariaDB) ---
+  mariadb:
+    image: mariadb:10.6
+    container_name: mariadb_db
+    environment:
+      # Variables d'environnement pour configurer la base de données
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: inte_continue
+      MYSQL_USER: root
+      MYSQL_PASSWORD: rootpassword
+    volumes:
+      # Persistance des données de la base de données
+      - mariadb_data:/var/lib/mysql
+    ports:
+      # Port MariaDB mappé sur l'hôte (optionnel, utile pour accéder directement)
+      - "3306:3306"
+    restart: always
+
+  # --- Service Jenkins (Intégration Continue) ---
+  jenkins:
+    image: jenkins/jenkins:lts-jdk17
+    container_name: jenkins_server
+    # Assurez-vous que jenkins est démarré après la base de données (si nécessaire)
+    depends_on:
+      - mariadb
+    environment:
+      # Fuseau horaire
+      - TZ=Europe/Paris
+    volumes:
+      # Persistance de la configuration, des jobs et des plugins de Jenkins
+      - jenkins_home:/var/jenkins_home
+      # Montage du socket Docker pour permettre à Jenkins de lancer des conteneurs Docker (Docker-in-Docker)
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      # Port web de Jenkins
+      - "8080:8080"
+      # Port JNLP pour les agents Jenkins
+      - "50000:50000"
+    restart: always
+
+  # --- Service Java (Environnement de Compilation/Test - Exemple) ---
+  # Ce service est un conteneur simple OpenJDK pour le développement. 
+  # Il n'est généralement pas nécessaire qu'il soit un service actif et permanent dans un docker-compose, 
+  # car c'est souvent Jenkins ou vous-même qui exécutez votre code Java dans son propre conteneur ou sur l'hôte.
+  # Je l'inclus à titre d'exemple d'environnement Java.
+  java_dev:
+    image: eclipse-temurin:17-jdk-focal
+    container_name: java_dev_env
+    # Définit un point d'entrée qui maintient le conteneur en vie
+    entrypoint: /bin/bash
+    # Commande qui maintient le conteneur en attente (utile si vous voulez vous y connecter)
+    tty: true
+    volumes:
+      # Exemple : Monter votre répertoire de projet Java
+      - ./mon-projet-java:/app
+    working_dir: /app
+    # Ce service n'est pas exposé par défaut sauf si vous en avez besoin
+
+# --- Volumes pour la persistance des données ---
+volumes:
+  mariadb_data:
+  jenkins_home:
