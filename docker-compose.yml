@@ -8,12 +8,13 @@ services:
     environment:
       # Variables d'environnement pour configurer la base de données
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: inte_continue
+      MYSQL_DATABASE: bibliotheque
       MYSQL_USER: root
       MYSQL_PASSWORD: rootpassword
     volumes:
       # Persistance des données de la base de données
       - mariadb_data:/var/lib/mysql
+      - ./bibliotheque.sql:/docker-entrypoint-initdb.d/bibliotheque.sql
     ports:
       # Port MariaDB mappé sur l'hôte (optionnel, utile pour accéder directement)
       - "3307:3306"
