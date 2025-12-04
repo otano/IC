@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="EmpruntTest" time="0.009" tests="1" errors="1" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="EmpruntTest" time="0.042" tests="1" errors="1" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -7,12 +7,13 @@
     <property name="java.vm.vendor" value="Ubuntu"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.vendor.url" value="https://ubuntu.com/"/>
+    <property name="user.timezone" value="Europe/Paris"/>
     <property name="os.name" value="Linux"/>
     <property name="java.vm.specification.version" value="21"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="FR"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-21-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/solweg/workflow/inte_continue/target/surefire/surefirebooter-20251204115745318_3.jar /home/solweg/workflow/inte_continue/target/surefire 2025-12-04T11-57-44_145-jvmRun1 surefire-20251204115745318_1tmp surefire_0-20251204115745318_2tmp"/>
+    <property name="sun.java.command" value="/home/solweg/workflow/inte_continue/target/surefire/surefirebooter-20251204120851442_3.jar /home/solweg/workflow/inte_continue/target/surefire 2025-12-04T12-08-51_329-jvmRun1 surefire-20251204120851442_1tmp surefire_0-20251204120851442_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/solweg/workflow/inte_continue/target/test-classes:/home/solweg/workflow/inte_continue/target/classes:/home/solweg/.m2/repository/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar:/home/solweg/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar:/home/solweg/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.0/junit-jupiter-5.10.0.jar:/home/solweg/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.0/junit-jupiter-api-5.10.0.jar:/home/solweg/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/solweg/.m2/repository/org/junit/platform/junit-platform-commons/1.10.0/junit-platform-commons-1.10.0.jar:/home/solweg/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/solweg/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.0/junit-jupiter-params-5.10.0.jar:/home/solweg/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.0/junit-jupiter-engine-5.10.0.jar:/home/solweg/.m2/repository/org/junit/platform/junit-platform-engine/1.10.0/junit-platform-engine-1.10.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +28,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/solweg/workflow/inte_continue/target/surefire/surefirebooter-20251204115745318_3.jar"/>
+    <property name="surefire.real.class.path" value="/home/solweg/workflow/inte_continue/target/surefire/surefirebooter-20251204120851442_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.9+10-Ubuntu-124.04"/>
     <property name="user.name" value="solweg"/>
@@ -53,51 +54,18 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="" classname="EmpruntTest" time="0.009">
-    <error message="Communications link failure&#10;&#10;The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server." type="com.mysql.cj.jdbc.exceptions.CommunicationsException"><![CDATA[com.mysql.cj.jdbc.exceptions.CommunicationsException: 
-Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
-	at bibliotheque.BDDbilbio.getConnection(BDDbilbio.java:23)
-	at EmpruntTest.initConnectionAndData(EmpruntTest.java:25)
+  <testcase name="" classname="EmpruntTest" time="0.042">
+    <error message="No value specified for parameter 2" type="java.sql.SQLException"><![CDATA[java.sql.SQLException: No value specified for parameter 2
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1084)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at EmpruntTest.insertTestData(EmpruntTest.java:104)
+	at EmpruntTest.initConnectionAndData(EmpruntTest.java:30)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	Suppressed: java.lang.NullPointerException: Cannot invoke "java.sql.Connection.prepareStatement(String)" because "conn" is null
-		at EmpruntTest.cleanUpData(EmpruntTest.java:86)
-		at EmpruntTest.finalCleanUp(EmpruntTest.java:76)
-		at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-		at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-		at java.base/java.util.Collections$UnmodifiableCollection.forEach(Collections.java:1117)
-		... 1 more
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166)
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
-	at com.mysql.cj.NativeSession.connect(NativeSession.java:121)
-	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945)
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
-	... 9 more
-Caused by: java.net.UnknownHostException: mariadb
-	at java.base/java.net.InetAddress$CachedLookup.get(InetAddress.java:988)
-	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1818)
-	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1688)
-	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:130)
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
-	... 12 more
 ]]></error>
   </testcase>
 </testsuite>

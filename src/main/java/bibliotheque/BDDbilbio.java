@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class BDDbilbio {
     // L'hôte est le nom du service Docker : 'mariadb'
-    private static final String URL = "jdbc:mysql://mariadb:3306/bibliotheque"; 
+    private static final String URL = "jdbc:mysql://localhost:3307/bibliotheque"; 
     
     // Identifiants correspondant à votre docker-compose.yml
     private static final String USER = "root"; 
